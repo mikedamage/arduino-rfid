@@ -19,7 +19,7 @@ end
 
 post "/tag" do
 	if params[:auth_key] == AUTH_KEY
-		tag = params[:tag]
+		tag = params[:tag].chomp
 		user = DB[:users].filter(:rfid_tag => tag)
 		
 		if user.count > 0
