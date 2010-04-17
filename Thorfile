@@ -31,4 +31,18 @@ class App < Thor
 		end
 	end
 	
+	desc "seed", "Seed database with sample entries"
+	def seed
+		%w(rubygems sequel).each {|lib| require lib }
+		# TODO: Write this method...
+		true
+	end
+	
+	desc "migrate_and_seed", "Run migrations and seed database"
+	def migrate_and_seed
+		migrate
+		add_fields
+		seed
+	end
+	
 end
